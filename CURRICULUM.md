@@ -3,6 +3,7 @@
 > 本文档是「课程」部分（教学目标、课时、能力矩阵、考核与教学建议）；
 > 「课件」部分是 [`index.html`](./index.html) 里的 10 章网页内容与 [`examples/`](./examples) 中的可运行示例工程。
 > 两份材料一一对应，可独立使用，也可配套讲授。
+> **在线课件**：<https://gavinjoe007.github.io/vibe-coding-course/>（随时可访问，无需下载）
 
 ---
 

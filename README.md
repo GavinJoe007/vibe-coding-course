@@ -3,11 +3,19 @@
 > 一套**不用 PPT、直接在网页里学完**的完整课程：从「一句话生成一个网页」到「用 MCP / Skills / Harness / Git 把一个项目做成可迭代、可交接的工程」。
 > 配套教学设计见 [`CURRICULUM.md`](./CURRICULUM.md)，网页课件见 [`index.html`](./index.html)。
 
+[![在线课件](https://img.shields.io/badge/在线课件-立即开始学习-7c5cff?style=for-the-badge)](https://gavinjoe007.github.io/vibe-coding-course/)
+[![许可](https://img.shields.io/badge/许可-可自由用于教学-lightgrey?style=flat-square)](#六环境要求与许可)
+
+**在线访问（无需下载）**：<https://gavinjoe007.github.io/vibe-coding-course/>
+**仓库地址**：<https://github.com/GavinJoe007/vibe-coding-course>
+
 ---
 
 ## 一、怎么打开课件
 
-**最简单**：双击 `index.html`，用浏览器打开即可。纯静态、零依赖、无需联网、无需构建、无需起服务。
+**不想装任何东西**：直接打开上面的在线地址，浏览器里就能学完 10 章。
+
+**想离线看 / 想改内容**：克隆仓库后双击 `index.html`，用浏览器打开即可。纯静态、零依赖、无需联网、无需构建、无需起服务。
 
 如果浏览器对本地文件有限制，也可以起一个本地静态服务：
 
