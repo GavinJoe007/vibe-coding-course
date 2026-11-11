@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "mini": {
+      "command": "node",
+      "args": ["/绝对路径/vibe-coding-course/examples/mcp/mini-mcp.js"]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/绝对路径/我的笔记"]
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    }
+  }
+}

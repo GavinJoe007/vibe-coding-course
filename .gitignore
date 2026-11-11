@@ -1,0 +1,22 @@
+# 这个课件仓库本身是纯静态站点，无需构建；以下为通用忽略项
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+dist/
+
+# 密钥与本地配置
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# 编辑器本地文件
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# AI 工具的本地会话缓存（不进版本库）
+.claude/settings.local.json
+*.tmp

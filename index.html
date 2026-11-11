@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Vibe Coding 从入门到工程化 —— 一套可在网页里学完的完整课件：MCP、Skills、Harness、Git 版本迭代，由简到繁的项目实战。" />
+<title>Vibe Coding 从入门到工程化 · 互动课件</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<div class="app">
+  <!-- ============ 侧边栏 ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">V<span>▶</span></div>
+      <div class="brand-text">
+        <strong>Vibe Coding</strong>
+        <span>从入门到工程化 · 互动课件</span>
+      </div>
+    </div>
+
+    <div class="side-progress">
+      <div class="side-progress-top">
+        <span>学习进度</span><span id="progressText">0 / 10</span>
+      </div>
+      <div class="bar"><div class="bar-fill" id="progressFill"></div></div>
+      <div class="side-progress-tip">读完后点章节底部的「标记完成」</div>
+    </div>
+
+    <nav class="nav" id="nav" aria-label="课程目录"></nav>
+
+    <div class="side-foot">
+      <button class="side-search" id="sideSearch">
+        <span>🔍 搜索课程内容</span><kbd>⌘K</kbd>
+      </button>
+      <div class="side-legend">← → 翻章　·　Esc 关闭弹窗</div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" id="backdrop"></div>
+
+  <!-- ============ 主区域 ============ -->
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="打开目录">☰</button>
+      <div class="crumb" id="crumb">课程地图</div>
+      <div class="top-actions">
+        <button class="ghost-btn" id="searchBtn"><span>🔍</span><span class="hide-sm">搜索</span><kbd>⌘K</kbd></button>
+        <button class="icon-btn" id="themeBtn" aria-label="切换深浅色" title="切换深浅色">🌙</button>
+      </div>
+    </header>
+    <div class="global-bar"><div class="global-bar-fill" id="globalBarFill"></div></div>
+
+    <main class="content" id="content"></main>
+
+    <footer class="pager" id="pager"></footer>
+  </div>
+</div>
+
+<!-- ============ 搜索浮层 ============ -->
+<div class="overlay" id="searchOverlay" hidden>
+  <div class="overlay-mask" data-close></div>
+  <div class="search-panel" role="dialog" aria-modal="true" aria-label="搜索课程内容">
+    <div class="search-input-row">
+      <span>🔍</span>
+      <input id="searchInput" type="text" placeholder="搜索概念、命令、章节… 例如：MCP / reflog / 渐进式披露" autocomplete="off" />
+      <kbd>Esc</kbd>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+    <div class="search-foot">输入关键词，实时检索全部 10 章内容 · ↑↓ 选择 · Enter 跳转</div>
+  </div>
+</div>
+
+<!-- ============ 代码 Playground ============ -->
+<div class="overlay" id="playOverlay" hidden>
+  <div class="overlay-mask" data-close></div>
+  <div class="play-panel" role="dialog" aria-modal="true" aria-label="代码 Playground">
+    <div class="play-head">
+      <div><strong>🧪 代码 Playground</strong><span>改一改代码，点「运行」立刻看到结果</span></div>
+      <button class="icon-btn" data-close aria-label="关闭">✕</button>
+    </div>
+    <div class="play-body">
+      <div class="play-editor">
+        <div class="play-label">index.html <button class="mini-btn" id="resetPlay">恢复初始代码</button></div>
+        <textarea id="playCode" spellcheck="false"></textarea>
+      </div>
+      <div class="play-preview">
+        <div class="play-label">预览 <button class="run-btn" id="runPlay">▶ 运行</button></div>
+        <iframe id="playFrame" title="代码预览" sandbox="allow-scripts allow-modals"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="assets/course-data.js"></script>
+<script src="assets/lessons-1.js"></script>
+<script src="assets/lessons-2.js"></script>
+<script src="assets/lessons-3.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

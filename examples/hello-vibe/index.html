@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>今日三件事</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; padding: 48px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f7f6f3; color: #22212a;
+    display: flex; justify-content: center;
+  }
+  .card { width: 100%; max-width: 520px; }
+  h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -.5px; }
+  .sub { color: #8a8794; font-size: 14px; margin: 0 0 28px; }
+  .row { display: flex; gap: 10px; margin-bottom: 22px; }
+  input {
+    flex: 1; padding: 13px 16px; font-size: 15px; font-family: inherit;
+    border: 1px solid #e3e1dd; border-radius: 12px; background: #fff; outline: none;
+  }
+  input:focus { border-color: #6c5ce7; box-shadow: 0 0 0 3px #6c5ce71a; }
+  button {
+    padding: 0 20px; font-size: 15px; font-family: inherit; cursor: pointer;
+    border: 0; border-radius: 12px; background: #6c5ce7; color: #fff;
+  }
+  button:active { transform: scale(.97); }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li {
+    display: flex; align-items: center; gap: 12px; padding: 15px 16px; margin-bottom: 10px;
+    background: #fff; border: 1px solid #eceae6; border-radius: 12px;
+    font-size: 15px; transition: .2s;
+  }
+  li.done { opacity: .5; }
+  li.done span { text-decoration: line-through; }
+  li input { width: 18px; height: 18px; flex: none; accent-color: #6c5ce7; cursor: pointer; }
+  li span { flex: 1; }
+  .del { background: none; color: #b8b5c0; font-size: 20px; padding: 0 4px; }
+  .foot { margin-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+  .count { color: #8a8794; font-size: 13px; }
+  .clear { background: none; color: #8a8794; font-size: 13px; padding: 6px; }
+  .empty { text-align: center; color: #a9a6b1; font-size: 14px; padding: 32px 0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>今日三件事</h1>
+  <p class="sub">只写最重要的三件，做完就收工。</p>
+  <div class="row">
+    <input id="inp" placeholder="想做的一件事…" maxlength="60" />
+    <button id="add">添加</button>
+  </div>
+  <ul id="list"></ul>
+  <div class="foot">
+    <span class="count" id="count"></span>
+    <button class="clear" id="clear">清空全部</button>
+  </div>
+</div>
+<script>
+  const KEY = 'today-three-v1';
+  const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch { return []; } };
+  let items = load();
+  const save = () => localStorage.setItem(KEY, JSON.stringify(items));
+  const $ = s => document.querySelector(s);
+
+  function render() {
+    const ul = $('#list');
+    ul.innerHTML = '';
+    if (!items.length) {
+      ul.innerHTML = '<div class="empty">还没有安排，先加一件吧 ✏️</div>';
+    }
+    items.forEach((it, i) => {
+      const li = document.createElement('li');
+      li.className = it.done ? 'done' : '';
+      const cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.checked = it.done;
+      cb.onchange = () => { items[i].done = cb.checked; save(); render(); };
+      const sp = document.createElement('span');
+      sp.textContent = it.text;
+      const del = document.createElement('button');
+      del.className = 'del'; del.textContent = '×';
+      del.onclick = () => { items.splice(i, 1); save(); render(); };
+      li.append(cb, sp, del); ul.append(li);
+    });
+    $('#count').textContent = `${items.filter(x => x.done).length} / ${items.length} 已完成`;
+  }
+
+  function add() {
+    const v = $('#inp').value.trim();
+    if (!v) return;
+    if (items.length >= 3) { alert('说好只做三件事的 🙂'); return; }
+    items.push({ text: v, done: false });
+    $('#inp').value = ''; save(); render();
+  }
+  $('#add').onclick = add;
+  $('#inp').onkeydown = e => { if (e.key === 'Enter') add(); };
+  $('#clear').onclick = () => { if (confirm('清空全部？')) { items = []; save(); render(); } };
+  render();
+</script>
+</body>
+</html>

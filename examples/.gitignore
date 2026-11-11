@@ -1,0 +1,25 @@
+# 依赖与构建产物
+node_modules/
+dist/
+build/
+.cache/
+*.log
+
+# 密钥与本地配置（绝不提交）
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.json
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# AI 工具的本地会话缓存
+.claude/settings.local.json
+*.tmp

@@ -1,0 +1,21 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash(git push*)",
+        "command": "echo '推送属于外部动作，必须人工确认' && exit 1"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write(*.js)|Edit(*.js)",
+        "command": "npx prettier --write \"$FILE\""
+      }
+    ],
+    "Stop": [
+      {
+        "command": "npm test -- --silent"
+      }
+    ]
+  }
+}
